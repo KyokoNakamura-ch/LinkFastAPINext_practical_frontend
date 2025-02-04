@@ -1,0 +1,9 @@
+# フロントエンドの不要ファイル
+frontend/node_modules/
+frontend/.next/
+
+# バックエンドの不要ファイル
+backend/__pycache__/
+
+# 環境変数ファイル（セキュリティ対策）
+.env
