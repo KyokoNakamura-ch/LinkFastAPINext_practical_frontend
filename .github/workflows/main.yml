@@ -19,12 +19,12 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        working-directory: ./frontend # サブディレクトリを指定
+        working-directory: ./frontend/src/app # 正しいディレクトリに設定
         run: |
           npm install
 
       - name: Build Next.js app
-        working-directory: ./frontend # サブディレクトリを指定
+        working-directory: ./frontend/src/app # 正しいディレクトリに設定
         run: |
           npm run build
 
