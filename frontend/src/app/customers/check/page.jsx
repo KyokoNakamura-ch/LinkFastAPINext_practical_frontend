@@ -10,6 +10,11 @@ async function fetchCustomer(id) {
   return res.json();
 }
 
+// 静的エクスポートのために追加
+export async function generateStaticParams() {
+  return []; // 静的エクスポート時、このページはスキップ
+}
+
 export default async function ReadPage({ query }) {
   const { id } = query;
   const customerInfo = await fetchCustomer(id);
