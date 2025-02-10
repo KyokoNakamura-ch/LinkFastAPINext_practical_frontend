@@ -1,4 +1,10 @@
 "use client";
+
+export async function generateStaticParams() {
+  // 静的エクスポート時、このルートを無効化する
+  return [];
+}
+
 import OneCustomerInfoCard from "@/app/components/one_customer_info_card.jsx";
 import fetchCustomer from "./fetchCustomer";
 import { useRouter, useSearchParams } from "next/navigation";
