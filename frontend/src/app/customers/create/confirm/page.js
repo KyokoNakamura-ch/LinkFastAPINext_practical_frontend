@@ -1,4 +1,4 @@
-export const dynamic = "force-dynamic"; // 追加するだけ
+export const dynamicParams = true; // 追加するだけ！
 
 "use client";
 
