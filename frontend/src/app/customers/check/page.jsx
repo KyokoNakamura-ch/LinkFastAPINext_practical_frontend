@@ -1,4 +1,4 @@
-export const dynamic = "force-dynamic"; // 追加するだけ
+export const dynamicParams = true; // 追加するだけ！
 
 import OneCustomerInfoCard from "@/app/components/one_customer_info_card.jsx";
 
