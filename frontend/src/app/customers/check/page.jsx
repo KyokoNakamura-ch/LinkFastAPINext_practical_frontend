@@ -1,6 +1,6 @@
-"use client"; // ✅ 一番上に移動！（これが重要！）
+"use client"; // ✅ これを最上部に！
 
-import { useState, useEffect } from "react";
+import { Suspense, useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import OneCustomerInfoCard from "@/app/components/one_customer_info_card.jsx";
 
@@ -14,9 +14,9 @@ async function fetchCustomer(id) {
   return res.json();
 }
 
-export default function ReadPage() {
+function CustomerInfo() {
   const searchParams = useSearchParams();
-  const id = searchParams.get("id"); // ✅ `query` ではなく `searchParams`
+  const id = searchParams.get("id");
   const [customerInfo, setCustomerInfo] = useState(null);
 
   useEffect(() => {
@@ -25,20 +25,24 @@ export default function ReadPage() {
     }
   }, [id]);
 
+  return customerInfo ? (
+    <OneCustomerInfoCard {...customerInfo} />
+  ) : (
+    <p>Loading...</p>
+  );
+}
+
+export default function ReadPage() {
   return (
-    <>
+    <Suspense fallback={<p>Loading...</p>}> {/* ✅ Suspense を追加！ */}
       <div className="alert alert-success">更新しました</div>
       <div className="card bordered bg-white border-blue-200 border-2 max-w-sm m-4">
-        {customerInfo ? (
-          <OneCustomerInfoCard {...customerInfo} />
-        ) : (
-          <p>Loading...</p> // ✅ `customerInfo` が `null` の場合を考慮
-        )}
+        <CustomerInfo />
       </div>
       <button className="btn btn-outline btn-accent">
         <a href="/customers">一覧に戻る</a>
       </button>
-    </>
+    </Suspense>
   );
 }
 
