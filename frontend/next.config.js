@@ -7,4 +7,7 @@ const nextConfig = {
       },
 }
 
-module.exports = nextConfig
+// module.exports = nextConfig
+module.exports = {
+  output: 'export', // 静的エクスポートの設定（デプロイできたけどアプリ見えない対策）
+};
