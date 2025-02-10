@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic"; // 追加するだけ
+
 "use client";
 
 export async function generateStaticParams() {
