@@ -10,34 +10,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # コードをチェックアウト
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      # Node.js をセットアップ
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16 # 動作していたバージョンを使用
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
 
-      # 依存関係のインストール
-      - name: Install dependencies
-        run: npm install
-        working-directory: ./frontend
+    - name: Install dependencies
+      run: npm install
+      working-directory: ./frontend
 
-      # Next.js アプリのビルド
-      - name: Build Next.js app
-        run: NODE_OPTIONS="--no-warnings" npm run build
-        working-directory: ./frontend
+    - name: Build project
+      run: npm run build
+      working-directory: ./frontend
 
-      # ビルド成果物を Azure にデプロイ
-      - name: Deploy to Azure Web App
-        uses: Azure/webapps-deploy@v2
-        with:
-          app-name: <your-app-name> # Azure App Service の名前を指定
-          slot-name: production
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: ./frontend/.next
+    - name: Deploy to Azure
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'your-app-name' # AzureのApp Service名を指定
+        slot-name: 'production'
+        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+        package: './frontend/.next' # ビルド結果ディレクトリを指定
           
 # name: Deploy Frontend to Azure Web App
 
