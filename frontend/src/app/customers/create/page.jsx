@@ -1,7 +1,3 @@
-export async function generateStaticParams() {
-  return []; // ✅ これで Next.js に「このページは静的にエクスポートしない」と指示！
-}
-
 "use client";
 import { useRef, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
