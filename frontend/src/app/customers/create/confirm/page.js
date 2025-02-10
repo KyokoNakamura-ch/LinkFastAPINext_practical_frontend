@@ -1,4 +1,8 @@
-"use client";
+"use client"; // ✅ 一番上に移動！（これが重要！）
+
+export async function generateStaticParams() {
+  return []; // ✅ これで Next.js に「このページは静的にエクスポートしない」と指示！
+}
 
 import OneCustomerInfoCard from "@/app/components/one_customer_info_card.jsx";
 import fetchCustomer from "./fetchCustomer";
