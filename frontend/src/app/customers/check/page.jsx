@@ -1,8 +1,8 @@
-export async function generateStaticParams() {
-  return []; // ✅ これだけで OK！
-}
+"use client"; // ✅ 一番上に移動！（これが重要！）
 
-"use client"; // ✅ クライアントコンポーネントであることを明示
+export async function generateStaticParams() {
+  return []; // ✅ これで Next.js に「このページは静的にエクスポートしない」と指示！
+}
 
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
