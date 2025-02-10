@@ -1,3 +1,7 @@
+export async function generateStaticParams() {
+  return []; // ✅ これだけで OK！
+}
+
 "use client"; // ✅ クライアントコンポーネントであることを明示
 
 import { useState, useEffect } from "react";
