@@ -1,29 +1,22 @@
 require('dotenv').config();
+const path = require('path');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env: {
-    // Reference a variable that was defined in the .env file and make it available at Build Time
     NEXT_PUBLIC_API_ENDPOINT: process.env.NEXT_PUBLIC_API_ENDPOINT,
   },
-  output: 'standalone', // ✅ "export" ではなく、"standalone" に変更！
+  output: 'standalone',
   experimental: {
     appDir: true,
+  },
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': path.resolve(__dirname, 'app'), // 追加: `@` を `app/` にマッピング
+    };
+    return config;
   },
 };
 
 module.exports = nextConfig;
-
-// require('dotenv').config()
-// /** @type {import('next').NextConfig} */
-// const nextConfig = {
-//     env: {
-//         // Reference a variable that was defined in the .env file and make it available at Build Time
-//         NEXT_PUBLIC_API_ENDPOINT: process.env.NEXT_PUBLIC_API_ENDPOINT,
-//       },
-// }
-
-// // module.exports = nextConfig
-// module.exports = {
-//   output: 'export', // 静的エクスポートの設定（デプロイできたけどアプリ見えない対策）
-// };
