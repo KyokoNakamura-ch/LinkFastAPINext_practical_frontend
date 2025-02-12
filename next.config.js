@@ -11,6 +11,7 @@ const nextConfig = {
     config.resolve.alias = {
       ...config.resolve.alias,
       '@': path.resolve(__dirname, 'app'), // `@` を `app/` にマッピング
+      '@/app/components': path.resolve(__dirname, 'app/components'), // `@/app/components` を明示的に設定
     };
     return config;
   },
