@@ -2,7 +2,7 @@
 
 import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import OneCustomerInfoCard from "@/app/components/one_customer_info_card.jsx";
+import OneCustomerInfoCard from '@/components/one_customer_info_card.jsx';
 import fetchCustomer from "./fetchCustomer";
 
 function CustomerInfo() {
