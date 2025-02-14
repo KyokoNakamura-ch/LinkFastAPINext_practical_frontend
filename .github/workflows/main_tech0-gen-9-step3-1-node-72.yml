@@ -31,9 +31,11 @@ jobs:
       - name: Copy artifact for deployment job
         run: |
           mkdir deploy
-          cp -r ./.next/. ./deploy
-          cp package.json ./deploy
-          cp -r node_modules ./deploy
+          cp -r ./.next/standalone/. ./deploy
+          cp -r ./.next/static/. ./deploy/.next/static
+          cp -r ./components ./deploy/components
+          cp -r ./public ./deploy/public
+          cp ./package.json ./deploy/package.json
 
       - name: Zip artifact for deployment
         run: zip release.zip ./deploy -r
