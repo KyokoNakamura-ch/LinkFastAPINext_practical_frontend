@@ -44,7 +44,6 @@ jobs:
           mkdir deploy
           cp -r ./.next/standalone/. ./deploy
           cp -r ./.next/static/. ./deploy/.next/static
-          cp -r ./public ./deploy/public
           cp -r ./components ./deploy/components # `one_customer_info_card.jsx` を確実に含める
 
       - name: Zip artifact for deployment
