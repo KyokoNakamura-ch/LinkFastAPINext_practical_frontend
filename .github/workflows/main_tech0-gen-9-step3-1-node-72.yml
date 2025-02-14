@@ -32,10 +32,10 @@ jobs:
           npm run build --if-present
           npm run test --if-present
 
-      - name: Ensure one_customer_info_card.jsx is included
+      - name: Ensure one_customer_info_card.jsx is included in the build
         run: |
-          if [ ! -f "./components/one_customer_info_card.jsx" ]; then
-            echo "ERROR: one_customer_info_card.jsx is missing!"
+          if ! grep -r "one_customer_info_card" .next/; then
+            echo "ERROR: one_customer_info_card.jsx is not in the build!"
             exit 1
           fi
 
