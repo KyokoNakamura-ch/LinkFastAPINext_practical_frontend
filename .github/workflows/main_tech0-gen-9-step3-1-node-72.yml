@@ -32,7 +32,6 @@ jobs:
         run: |
           mkdir deploy
           cp -r ./app ./deploy/app  # `app/` フォルダを含める
-          cp -r ./components ./deploy/components  # `components/` も含める
           cp -r ./.next/standalone/. ./deploy
           cp -r ./.next/static/. ./deploy/.next/static
           cp ./package.json ./deploy/package.json
